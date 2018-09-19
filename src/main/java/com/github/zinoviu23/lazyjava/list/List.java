@@ -1,6 +1,6 @@
-package lazy.list;
+package com.github.zinoviu23.lazyjava.list;
 
-import lazy.LazyValue;
+import com.github.zinoviu23.lazyjava.LazyValue;
 
 import java.util.Iterator;
 import java.util.stream.Stream;

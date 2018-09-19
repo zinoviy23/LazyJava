@@ -1,4 +1,4 @@
-package lazy;
+package com.github.zinoviu23.lazyjava;
 
 public class LazyValue<T> {
     private T value;

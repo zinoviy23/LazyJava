@@ -1,7 +1,6 @@
-package lazy.list;
+package com.github.zinoviu23.lazyjava.list;
 
-import lazy.LazyValue;
-import org.junit.Assert;
+import com.github.zinoviu23.lazyjava.LazyValue;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,15 +8,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
-import static lazy.list.List.*;
 
 public class ListTest {
 
     @Test
     public void addToHeadTest() {
-        List<Integer> list = addToHead(
-                1, new LazyValue<>(() -> addToHead(
-                    2, new LazyValue<>(() -> addToHead(
+        List<Integer> list = List.addToHead(
+                1, new LazyValue<>(() -> List.addToHead(
+                    2, new LazyValue<>(() -> List.addToHead(
                         3, null))
         )));
 
@@ -29,16 +27,16 @@ public class ListTest {
 
     @Test
     public void getTest() {
-        List<Integer> list = addToHead(
-                1, new LazyValue<>(() -> addToHead(
-                        2, new LazyValue<>(() -> addToHead(
+        List<Integer> list = List.addToHead(
+                1, new LazyValue<>(() -> List.addToHead(
+                        2, new LazyValue<>(() -> List.addToHead(
                                 3, null))
                 )));
 
-        assertEquals(1,(int) get(0, list));
-        assertEquals(2,(int) get(1, list));
-        assertEquals(3,(int) get(2, list));
-        assertNull(get(4, list));
+        assertEquals(1,(int) List.get(0, list));
+        assertEquals(2,(int) List.get(1, list));
+        assertEquals(3,(int) List.get(2, list));
+        assertNull(List.get(4, list));
     }
 
     /**
@@ -46,9 +44,9 @@ public class ListTest {
      */
     @Test
     public void iteratorTest() {
-        List<Integer> list = addToHead(
-                1, new LazyValue<>(() -> addToHead(
-                        2, new LazyValue<>(() -> addToHead(
+        List<Integer> list = List.addToHead(
+                1, new LazyValue<>(() -> List.addToHead(
+                        2, new LazyValue<>(() -> List.addToHead(
                                 3, null))
                 )));
 
@@ -68,10 +66,10 @@ public class ListTest {
      */
     @Test
     public void streamTest() {
-        List<Integer> list = addToHead(
-                1, new LazyValue<>(() -> addToHead(
-                        2, new LazyValue<>(() -> addToHead(
-                                3, new LazyValue<>(() -> addToHead(
+        List<Integer> list = List.addToHead(
+                1, new LazyValue<>(() -> List.addToHead(
+                        2, new LazyValue<>(() -> List.addToHead(
+                                3, new LazyValue<>(() -> List.addToHead(
                                         4, null))))
                 )));
 

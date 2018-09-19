@@ -1,7 +1,7 @@
-package lazy.functions;
+package com.github.zinoviu23.lazyjava.functions;
 
-import lazy.LazyValue;
-import lazy.list.List;
+import com.github.zinoviu23.lazyjava.LazyValue;
+import com.github.zinoviu23.lazyjava.list.List;
 
 import java.util.function.BiFunction;
 

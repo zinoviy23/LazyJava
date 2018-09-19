@@ -1,15 +1,14 @@
-package lazy.samples;
+package com.github.zinoviu23.lazyjava.samples;
 
-import lazy.LazyValue;
-import lazy.list.List;
+import com.github.zinoviu23.lazyjava.LazyValue;
+import com.github.zinoviu23.lazyjava.functions.Zip;
+import com.github.zinoviu23.lazyjava.list.List;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.valueOf;
-import static lazy.functions.Zip.zipWith;
-import static lazy.list.List.addToHead;
-import static lazy.list.List.get;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -20,9 +19,9 @@ public class FibonacciTest {
     /**
      * Infinite list of fibonacci number
      */
-    private static List<BigInteger> fibonacciList = addToHead(valueOf(0),
-            new LazyValue<>(() -> addToHead(valueOf(1),
-                    new LazyValue<>(() -> zipWith(BigInteger::add, fibonacci(), fibonacci().getTail().getValue())))));
+    private static List<BigInteger> fibonacciList = List.addToHead(valueOf(0),
+            new LazyValue<>(() -> List.addToHead(valueOf(1),
+                    new LazyValue<>(() -> Zip.zipWith(BigInteger::add, fibonacci(), fibonacci().getTail().getValue())))));
 
     /**
      * Function for getting list of fibonacci numbers
@@ -37,14 +36,14 @@ public class FibonacciTest {
      */
     @Test
     public void fibonacciTest() {
-        assertEquals(valueOf(1), get(1, fibonacciList));
-        assertEquals(valueOf(1), get(2, fibonacciList));
-        assertEquals(valueOf(2), get(3, fibonacciList));
-        assertEquals(valueOf(3), get(4, fibonacciList));
+        Assert.assertEquals(valueOf(1), List.get(1, fibonacciList));
+        Assert.assertEquals(valueOf(1), List.get(2, fibonacciList));
+        Assert.assertEquals(valueOf(2), List.get(3, fibonacciList));
+        Assert.assertEquals(valueOf(3), List.get(4, fibonacciList));
 
-        assertNotNull(get(6, fibonacciList));
+        assertNotNull(List.get(6, fibonacciList));
 
-        BigInteger bi = get(1000, fibonacciList);
+        BigInteger bi = List.get(1000, fibonacciList);
 
         System.gc();  // tests deleting unnecessary compution objects
 
