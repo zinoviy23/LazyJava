@@ -1,6 +1,6 @@
 package com.github.zinoviu23.lazyjava;
 
 @FunctionalInterface
-public interface Compution<T> {
+public interface Computation<T> {
     T compute();
 }

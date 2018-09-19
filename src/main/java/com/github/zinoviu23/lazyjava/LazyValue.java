@@ -5,17 +5,17 @@ public class LazyValue<T> {
 
     private boolean computed = false;
 
-    private Compution<T> compution;
+    private Computation<T> computation;
 
-    public LazyValue(Compution<T> compution) {
-        this.compution = compution;
+    public LazyValue(Computation<T> computation) {
+        this.computation = computation;
     }
 
     public T getValue() {
         if (!computed) {
             computed = true;
-            value = compution.compute();
-            compution = null;
+            value = computation.compute();
+            computation = null;
         }
 
         return value;
